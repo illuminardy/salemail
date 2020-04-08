@@ -1,0 +1,38 @@
+.email-list-item-container {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #eaeaec;
+}
+
+.email-list-item-container:hover {
+  cursor: pointer;
+}
+
+.email-list-item-select {
+  width: 5%;
+  margin-top: 5px;
+}
+
+.email-list-item-group {
+  width: 90%;
+}
+
+.email-list-item-date {
+  width: 10%;
+}
+
+.email-list-item-subject {
+  display: flex;
+  font-weight: 500;
+  margin: 2px 0;
+}
+
+.email-list-item-subject, 
+.email-list-item-sender,
+.email-list-item-date  {
+  font-size: 1.5rem;
+}
+
+.email-list-item-body {
+  width: 100px;
+}

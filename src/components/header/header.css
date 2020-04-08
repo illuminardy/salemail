@@ -1,0 +1,11 @@
+.header-container {
+  background-color: #F1F1F3;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 2.6rem;
+  text-align: center;
+}

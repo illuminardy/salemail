@@ -1,8 +1,14 @@
 import React from 'react';
 
+import './header.css';
+
 const Header = (props) => {
   return(
-    <h1>Hello from Header</h1>
+    <div className="header-container">
+      <div className="header-logo">
+        Sale Mail
+      </div>
+    </div>
   )
 };
 

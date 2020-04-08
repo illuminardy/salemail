@@ -1,0 +1,19 @@
+.side-nav-container {
+  padding-left: 20px;
+  width: 150px;
+  display: none;
+}
+
+.side-nav-tags {
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .side-nav-tags {
+    display: block;
+  }
+  
+  .side-nav-container {
+    display: block;
+  }
+}
