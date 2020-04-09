@@ -9,30 +9,96 @@
 }
 
 .email-list-item-select {
-  width: 5%;
+  width: 25px;
   margin-top: 5px;
 }
 
 .email-list-item-group {
   width: 90%;
+  align-items: center;
+}
+.email-list-item-group2 {
+  display: flex;
+  height: 25px;
+  align-items: baseline;
 }
 
-.email-list-item-date {
-  width: 10%;
+.email-list-item-group3 {
+  overflow: hidden;
+}
+
+.email-list-item-sender {
+  margin-right: 5px;
 }
 
 .email-list-item-subject {
-  display: flex;
-  font-weight: 500;
-  margin: 2px 0;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
-.email-list-item-subject, 
-.email-list-item-sender,
-.email-list-item-date  {
-  font-size: 1.5rem;
+.email-list-tags {
+  display: flex;
+}
+
+.email-list-item-content {
+  display: flex;
+  flex-grow: 1;
+}
+
+.email-list-item-dash {
+  display: none;
 }
 
 .email-list-item-body {
   width: 100px;
+}
+
+.email-list-item-preview {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 300px;
+  color: #5f6368;
+  margin-top: 5px;
+}
+
+.email-list-item-subject, 
+.email-list-item-sender,
+.email-list-item-date,
+.email-list-item-preview  {
+  font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 600px) {
+  .email-list-item-group {
+    display: flex;
+  }
+
+  .email-list-item-subject {
+    max-width: 700px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .email-list-item-sender {
+    width: 200px;
+  }
+
+  .email-list-item-group3 {
+    display: flex;
+    align-items: center;
+  }
+
+  .email-list-item-preview {
+    margin: 0;
+  }
+
+  .email-list-item-dash {
+    display: inline;
+    font-size: 1.6rem;
+    margin: 0 5px;
+    color: #5f6368;
+  }
 }

@@ -18,7 +18,14 @@ code {
 
 .app-content {
   display: flex;
-  padding: 20px;
+  padding: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+  .app-content {
+    display: flex;
+    padding: 20px 40px;
+  }
 }
 
 .app-tags {

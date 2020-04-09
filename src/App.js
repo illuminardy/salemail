@@ -1,8 +1,5 @@
 import React from 'react';
 
-import Messages from './containers/Messages';
-import MessageBody from './containers/MessageBody';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +11,11 @@ import './app.css';
 
 import Header from './components/Header'
 import SideNav from './components/SideNav';
+import EmailList from './components/EmailList'
+import EmailBody from './components/EmailBody';
+
+import { messages } from './utils/email-manager';
+import { getMessageById } from './utils/email-manager';
 
 function App() {
   return (
@@ -23,9 +25,9 @@ function App() {
         <Router>
           <SideNav />
           <Switch>
-            <Route path="/inbox" component={Messages} exact />
-            <Route path="/inbox/:id" component={MessageBody} />
-            <Route path="/tags/:id" component={Messages} />
+            <Route path="/inbox" exact render={() => <EmailList messages={messages} />} />
+            <Route path="/inbox/:id"  render={(props) => <EmailBody message={getMessageById(props.match.params.id)} />} />
+            <Route path="/tags/:id" component={EmailList} />
             <Redirect from="/" to="/inbox" />
           </Switch>
         </Router>

@@ -18,7 +18,7 @@ export const messages = sortMessagesByDate(emails.messages)
           ...message,
           body: sanitizedBody,
           date: new Date(message.date).toLocaleDateString(),
-          preview: `${stripHTML(sanitizedBody).substring(0, 100)}...`
+          preview: `${stripHTML(sanitizedBody)}`
         }
       });
 
@@ -29,3 +29,7 @@ export const tags = [...messages.reduce((acc, curr) => {
 
   return acc;
 }, new Set(["inbox"]))];
+
+export const getMessageById = (id) => {
+  return messages.find((message) => message.id === id);
+};

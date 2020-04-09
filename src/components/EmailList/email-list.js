@@ -1,9 +1,9 @@
 import React from 'react';
 import EmailListItem from '../EmailListItem';
 
-import { messages } from '../../utils/email-manager';
+import './email-list.css';
 
-const EmailList = () => {
+const EmailList = ({ messages }) => {
   const emails = messages.map((message) => {
     return <EmailListItem message={message} />
   });
