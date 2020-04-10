@@ -3,9 +3,11 @@
   padding: 20px 40px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #eaeaec;
 }
 
 .header-logo {
   font-size: 2.6rem;
   text-align: center;
+  color: #5F6368;
 }

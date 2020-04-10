@@ -5,7 +5,7 @@ const sortMessagesByDate = (messages) => {
   return messages.sort((a, b) => {
     return new Date(b.date) - new Date(a.date);
   })
-}
+};
 
 // Source: https://stackoverflow.com/questions/822452/strip-html-from-text-javascript
 const stripHTML = (html) => html.replace(/<[^>]*>?/gm, ''); 
@@ -28,7 +28,19 @@ export const tags = [...messages.reduce((acc, curr) => {
   });
 
   return acc;
-}, new Set(["inbox"]))];
+}, new Set())];
+
+export const getMessagesByTag = (tag) => {
+  return messages.filter((message) => {
+    return message.tags.find((val) => val === tag);
+  });
+};
+
+export const getMessageIdsByTag = () => {
+  return messages.reduce((acc, curr) => {
+    return acc.add(curr.id);
+  }, new Set());
+};
 
 export const getMessageById = (id) => {
   return messages.find((message) => message.id === id);

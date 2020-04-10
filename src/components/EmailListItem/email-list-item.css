@@ -1,6 +1,6 @@
 .email-list-item-container {
   display: flex;
-  padding: 10px 0;
+  padding: 10px 15px;
   border-bottom: 1px solid #eaeaec;
 }
 
@@ -9,8 +9,14 @@
 }
 
 .email-list-item-select {
-  width: 25px;
-  margin-top: 5px;
+  cursor: pointer;
+  color: #c6c6c6;
+  transition: color 0.2s ease;
+  margin-right: 5px;
+}
+
+.email-list-item-select:hover {
+  color: #444;
 }
 
 .email-list-item-group {
@@ -100,5 +106,10 @@
     font-size: 1.6rem;
     margin: 0 5px;
     color: #5f6368;
+  }
+
+  .email-list-item-date {
+    display: flex;
+    align-items: center;
   }
 }

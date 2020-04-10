@@ -1,15 +1,20 @@
-import React from 'react';
-import Tag from '../Tag';
-
+import React, { useContext } from 'react';
 import { useHistory } from "react-router-dom";
+import SelectedContext from '../../SelectedContext';
+import Tag from '../Tag';
 
 import './email-list-item.css';
 
-const EmailListItem = ({ message }) => {  
+const EmailListItem = ({  location, message }) => {
+  const selected = useContext(SelectedContext)
   const history = useHistory();
 
-  function handleClick() {
-    history.push(`/inbox/${message.id}`);
+  function handleEmailSelected() {
+    selected.toggleSelected(message.id);
+  }
+
+  function handleEmailClick() {
+    history.push(`${history.location.pathname}/${message.id}`);
   }
 
   const tags = message.tags.map((tagStr, idx) => {
@@ -18,8 +23,10 @@ const EmailListItem = ({ message }) => {
 
   return (
     <div className="email-list-item-container">
-      <input className="email-list-item-select" type="checkbox" />
-      <div className="email-list-item-content" onClick={handleClick}>
+      <i onClick={handleEmailSelected} className="material-icons email-list-item-select">
+        {selected.ids.has(message.id) ? 'check_box' : 'check_box_outline_blank'}
+      </i>
+      <div onClick={handleEmailClick} className="email-list-item-content">
         <div className="email-list-item-group">
           <div className="email-list-item-group2">
             <div className="email-list-item-sender">{message.sender}</div>
