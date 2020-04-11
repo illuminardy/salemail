@@ -3,7 +3,7 @@ import EmailBodyList from '../EmailBodyList';
 import EmailBodyListItem from '../EmailBodyListItem';
 import Tag from '../Tag';
 
-import './email-body.css';
+import './email-body.scss';
 
 const EmailBody = ({ message }) => {
   const tags = message.tags.map((tag, idx) => {

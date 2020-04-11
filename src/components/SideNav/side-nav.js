@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import { tags } from '../../utils/email-manager';
 
-import './side-nav.css';
+import './side-nav.scss';
 
 const SideNav = () => {
   let tagLinks = tags.map((tag) => {

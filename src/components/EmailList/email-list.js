@@ -1,7 +1,7 @@
 import React from 'react';
 import EmailListItem from '../EmailListItem';
 
-import './email-list.css';
+import './email-list.scss';
 
 const EmailList = ({ messages }) => {
   const emails = messages.map((message) => {

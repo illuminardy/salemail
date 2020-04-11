@@ -1,0 +1,114 @@
+.email-list-item {
+  &-content {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &-container {
+    display: flex;
+    padding: 10px 15px;
+    border-bottom: 1px solid #eaeaec;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-date {
+    @media (min-width: 600px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-dash {
+    display: none;
+
+    @media (min-width: 600px) {
+      display: inline;
+      font-size: 1.6rem;
+      margin: 0 5px;
+      color: #5f6368;
+    }
+  }
+
+  &-group {
+    width: 90%;
+    align-items: center;
+
+    &-1 {
+      display: flex;
+      height: 25px;
+      align-items: baseline;
+    }
+    &-2 {
+      overflow: hidden;
+
+      @media (min-width: 600px) {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: 600px) {
+      display: flex;    
+    }
+  }
+
+  &-preview {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 300px;
+    color: #5f6368;
+    margin-top: 5px;
+
+
+    @media (min-width: 600px) {
+      margin: 0;
+    }
+  }
+
+  &-sender {
+    margin-right: 5px;
+
+    @media (min-width: 600px) {
+      width: 200px;
+    }
+  }
+
+  &-subject {
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @media (min-width: 600px) {
+      max-width: 700px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; 
+    }
+  }
+
+  &-select {
+    cursor: pointer;
+    color: #c6c6c6;
+    transition: color 0.2s ease;
+    margin-right: 5px;
+
+    :hover {
+      color: #444;
+    }
+  }
+
+  &-tags {
+    display: flex;
+  }
+  
+  &-date,
+  &-preview,
+  &-subject,
+  &-sender {
+    font-size: 1.5rem;
+  }
+}

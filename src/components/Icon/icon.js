@@ -1,11 +1,19 @@
 import React from 'react';
+import classNames from 'classnames';
 
-const Icon = ({ clickHandler, name }) => {
-  return(
+import './icon.scss';
+
+const Icon = ({ clickHandler, enabled, name }) => {
+  const iconClass = classNames({
+    'material-icons': true,
+    'icon--enabled': enabled,
+    'icon--disabled': !enabled
+  });
+
+  return (
     <i 
-      style={{cursor: "pointer"}} 
       onClick={clickHandler ? clickHandler : null} 
-      className="material-icons">
+      className={iconClass}>
         {name}
     </i>
   )

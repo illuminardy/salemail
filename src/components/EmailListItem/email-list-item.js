@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 import SelectedContext from '../../SelectedContext';
 import Tag from '../Tag';
 
-import './email-list-item.css';
+import './email-list-item.scss';
 
-const EmailListItem = ({  location, message }) => {
+const EmailListItem = ({  message }) => {
   const selected = useContext(SelectedContext)
   const history = useHistory();
 
@@ -28,15 +28,15 @@ const EmailListItem = ({  location, message }) => {
       </i>
       <div onClick={handleEmailClick} className="email-list-item-content">
         <div className="email-list-item-group">
-          <div className="email-list-item-group2">
+          <div className="email-list-item-group-1">
             <div className="email-list-item-sender">{message.sender}</div>
             {tags && tags.length > 0 &&
-              <div className="email-list-tags">
+              <div className="email-list-item-tags">
                 {tags}
               </div>
             }
           </div>
-          <div className="email-list-item-group3">
+          <div className="email-list-item-group-2">
             <div className="email-list-item-subject">{message.subject}</div>
             <span className="email-list-item-dash">-</span>
             <div className="email-list-item-preview">{message.preview}</div>

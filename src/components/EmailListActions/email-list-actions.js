@@ -24,12 +24,12 @@ const EmailListActions = (props) => {
       <Fragment>
         {selected.ids.size ? (
           <Fragment>
-            <Icon key={"deselect"} name={"indeterminate_check_box"} clickHandler={handleDeselectAll} />
+            <Icon enabled key={"deselect"} name={"indeterminate_check_box"} clickHandler={handleDeselectAll} />
             {selectedEmailIcons}
           </Fragment>
           ) : (
             <Fragment>
-              <Icon key={"select"} name={"check_box_outline_blank"} clickHandler={handleSelectAll} />
+              <Icon enabled key={"select"} name={"check_box_outline_blank"} clickHandler={handleSelectAll} />
               <Icon key={"refresh"} name={"refresh"} />
               <Icon key={"more_vert"} name={"more_vert"} />
             </Fragment>

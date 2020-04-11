@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import {
   BrowserRouter as Router,
@@ -7,7 +7,7 @@ import {
   Redirect
 } from "react-router-dom";
 
-import './app.css';
+import './app.scss';
 
 import Header from './components/Header'
 import SideNav from './components/SideNav';
@@ -17,20 +17,17 @@ import EmailBody from './components/EmailBody';
 import EmailBodyActions from './components/EmailBodyActions';
 
 import { SelectedProvider } from './SelectedContext';
-import { messages, getMessagesByTag, getMessageById } from './utils/email-manager';
+import { getMessages, getMessagesByTag, getMessageById } from './utils/email-manager';
 
 function App() {
-  
   return (
-    <div className="App">
+    <Fragment>
       <Header />
       <div className="app-content">
         <Router>
           <SelectedProvider >
-            <div className="app-buttons2">
-              <div className="app-buttons">
-                <button className="app-compose">Compose</button>
-              </div>
+            <div className="app-actions-row">
+              <button className="app-compose">Compose</button>
               <div className="app-actions">
                 <Route path="/inbox" exact component={EmailListActions} />
                 <Route path="/inbox/:id" component={EmailBodyActions} />
@@ -41,7 +38,7 @@ function App() {
             <div className="app-body">
               <SideNav />
               <Switch>
-                <Route path="/inbox" exact render={() => <EmailList messages={messages} />} />
+                <Route path="/inbox" exact render={() => <EmailList messages={getMessages()} />} />
                 <Route path="/inbox/:id"  render={(props) => <EmailBody message={getMessageById(props.match.params.id)} />} />
                 <Route path="/tag/:name" exact render={(props) => <EmailList messages={getMessagesByTag(props.match.params.name)} />}  />
                 <Route path="/tag/:name/:id"  render={(props) => <EmailBody message={getMessageById(props.match.params.id)} />} />
@@ -51,9 +48,7 @@ function App() {
           </SelectedProvider>
         </Router>
       </div>
-    </div> 
-
-
+    </Fragment>
   );
 }
 

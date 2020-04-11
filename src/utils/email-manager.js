@@ -7,20 +7,23 @@ const sortMessagesByDate = (messages) => {
   })
 };
 
+const sanitizeInput = (message) => {
+  const sanitizedBody = dompurify.sanitize(message.body);
+
+  return {
+    ...message,
+    body: sanitizedBody,
+    date: new Date(message.date).toLocaleDateString(),
+    preview: `${stripHTML(sanitizedBody)}`
+  }
+};
+
 // Source: https://stackoverflow.com/questions/822452/strip-html-from-text-javascript
 const stripHTML = (html) => html.replace(/<[^>]*>?/gm, ''); 
 
-export const messages = sortMessagesByDate(emails.messages)
-      .map((message) => {
-        const sanitizedBody = dompurify.sanitize(message.body);
-
-        return {
-          ...message,
-          body: sanitizedBody,
-          date: new Date(message.date).toLocaleDateString(),
-          preview: `${stripHTML(sanitizedBody)}`
-        }
-      });
+const messages = 
+    sortMessagesByDate(emails.messages)
+    .map(sanitizeInput);
 
 export const tags = [...messages.reduce((acc, curr) => {
   curr.tags.forEach((tag) => {
@@ -44,4 +47,8 @@ export const getMessageIdsByTag = () => {
 
 export const getMessageById = (id) => {
   return messages.find((message) => message.id === id);
+};
+
+export const getMessages = () => {
+  return messages;
 };

@@ -1,11 +1,16 @@
 import React, { Fragment } from 'react';
+import { useHistory } from "react-router-dom";
+
 import Icon from '../Icon';
 
 const iconNames = ["archive", "report", "delete", "markunread", "watch_later", "label"];
 
 const EmailBodyActions = (props) => {
+  const history = useHistory();
+  
   function handleBackNavigation() {
-    // selected.selectAll(getMessageIdsByTag());
+    console.log("handleBackNavigation")
+    history.goBack();
   };
 
   const selectedEmailIcons = iconNames.map((name, idx) => {
@@ -14,7 +19,7 @@ const EmailBodyActions = (props) => {
 
   return (
     <Fragment>
-      <Icon key={"arrow_back"} name={"arrow_back"} />
+      <Icon clickHandler={handleBackNavigation} enabled key={"arrow_back"} name={"arrow_back"} />
       {selectedEmailIcons}
     </Fragment> 
   )

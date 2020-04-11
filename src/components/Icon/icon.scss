@@ -1,0 +1,9 @@
+.icon {
+  &--enabled {
+    cursor: pointer;
+  } 
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+}
