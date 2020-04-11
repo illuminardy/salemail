@@ -56,7 +56,8 @@ code {
     }
 
     @media (min-width: 600px) {
-      display: inline-flex;
+      display: flex;
+      justify-content: center;
       align-items: center;
       cursor: pointer;
       margin-left: 5px;
