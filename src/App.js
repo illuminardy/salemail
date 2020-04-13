@@ -17,7 +17,7 @@ import EmailBody from './components/EmailBody';
 import EmailBodyActions from './components/EmailBodyActions';
 
 import { SelectedProvider } from './SelectedContext';
-import { getMessages, getMessagesByTag, getMessageById } from './utils/email-manager';
+import { EmailProvider } from './context/EmailContext';
 
 function App() {
   return (
@@ -25,27 +25,29 @@ function App() {
       <Header />
       <div className="app-content">
         <Router>
-          <SelectedProvider >
-            <div className="app-actions-row">
-              <button className="app-compose">Compose</button>
-              <div className="app-actions">
-                <Route path="/inbox" exact component={EmailListActions} />
-                <Route path="/inbox/:id" component={EmailBodyActions} />
-                <Route path="/tag/:name" exact component={EmailListActions} />
-                <Route path="/tag/:name/:id" component={EmailBodyActions} />
+          <EmailProvider>
+            <SelectedProvider >
+              <div className="app-actions-row">
+                <button className="app-compose">Compose</button>
+                <div className="app-actions">
+                  <Route path="/inbox" exact component={EmailListActions} />
+                  <Route path="/inbox/:id" component={EmailBodyActions} />
+                  <Route path="/tag/:name" exact component={EmailListActions} />
+                  <Route path="/tag/:name/:id" component={EmailBodyActions} />
+                </div>
               </div>
-            </div>
-            <div className="app-body">
-              <SideNav />
-              <Switch>
-                <Route path="/inbox" exact render={() => <EmailList messages={getMessages()} />} />
-                <Route path="/inbox/:id"  render={(props) => <EmailBody message={getMessageById(props.match.params.id)} />} />
-                <Route path="/tag/:name" exact render={(props) => <EmailList messages={getMessagesByTag(props.match.params.name)} />}  />
-                <Route path="/tag/:name/:id"  render={(props) => <EmailBody message={getMessageById(props.match.params.id)} />} />
-                <Redirect from="/" to="/inbox" />
-              </Switch>
-            </div>
-          </SelectedProvider>
+              <div className="app-body">
+                <SideNav />
+                <Switch>
+                  <Route path="/inbox" exact component={EmailList} />
+                  <Route path="/inbox/:id"  component={EmailBody} /> 
+                  <Route path="/tag/:name" exact component={EmailList} />
+                  <Route path="/tag/:name/:id" component={EmailBody} />
+                  <Redirect from="/" to="/inbox" />
+                </Switch>
+              </div>
+            </SelectedProvider>
+          </EmailProvider>
         </Router>
       </div>
     </Fragment>

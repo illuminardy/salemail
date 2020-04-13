@@ -1,13 +1,12 @@
-import emails from "./emails.json"; 
 import dompurify from 'dompurify';
 
-const sortMessagesByDate = (messages) => {
+export const sortMessagesByDate = (messages) => {
   return messages.sort((a, b) => {
     return new Date(b.date) - new Date(a.date);
   })
 };
 
-const sanitizeInput = (message) => {
+export const sanitizeInput = (message) => {
   const sanitizedBody = dompurify.sanitize(message.body);
 
   return {
@@ -21,34 +20,34 @@ const sanitizeInput = (message) => {
 // Source: https://stackoverflow.com/questions/822452/strip-html-from-text-javascript
 const stripHTML = (html) => html.replace(/<[^>]*>?/gm, ''); 
 
-const messages = 
-    sortMessagesByDate(emails.messages)
-    .map(sanitizeInput);
-
-export const tags = [...messages.reduce((acc, curr) => {
+export const getMessageTags = (messages) => {
+  return [...messages.reduce((acc, curr) => {
   curr.tags.forEach((tag) => {
     if (!acc.has(tag)) acc.add(tag);
   });
 
   return acc;
-}, new Set())];
+  }, new Set())];
+}
 
-export const getMessagesByTag = (tag) => {
+export const getMessagesByTag = (messages, tag) => {
+  if (!tag) return messages;
+
   return messages.filter((message) => {
     return message.tags.find((val) => val === tag);
   });
 };
 
-export const getMessageIdsByTag = () => {
+export const getMessageIdsByTag = (messages) => {
   return messages.reduce((acc, curr) => {
     return acc.add(curr.id);
   }, new Set());
 };
 
-export const getMessageById = (id) => {
+export const getMessageById = (messages, id) => {
   return messages.find((message) => message.id === id);
 };
 
-export const getMessages = () => {
-  return messages;
-};
+// export const getMessages = () => {
+//   return messages;
+// };

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import EmailContext from '../../context/EmailContext';
 import { NavLink } from 'react-router-dom'
-import { tags } from '../../utils/email-manager';
 
 import './side-nav.scss';
 
 const SideNav = () => {
-  let tagLinks = tags.map((tag) => {
+  const email = useContext(EmailContext);
+
+  let tagLinks = email.tags.map((tag) => {
     return <NavLink className="side-nav-tag" to={`/tag/${tag}`} key={tag}>{tag}</NavLink>
   });
 

@@ -9,7 +9,6 @@ const EmailBodyActions = (props) => {
   const history = useHistory();
   
   function handleBackNavigation() {
-    console.log("handleBackNavigation")
     history.goBack();
   };
 

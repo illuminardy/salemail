@@ -1,15 +1,17 @@
 import React, { Fragment, useContext } from 'react';
 import { getMessageIdsByTag } from '../../utils/email-manager';
 import SelectedContext from '../../SelectedContext';
+import EmailContext from '../../context/EmailContext';
 import Icon from '../Icon';
 
 const iconNames = ["archive", "report", "delete", "markunread", "watch_later", "label"];
 
-const EmailListActions = (props) => {
+const EmailListActions = () => {
+  const email = useContext(EmailContext);
   const selected = useContext(SelectedContext);
 
   function handleSelectAll() {
-    selected.selectAll(getMessageIdsByTag());
+    selected.selectAll(getMessageIdsByTag(email.messages));
   };
 
   function handleDeselectAll() {
