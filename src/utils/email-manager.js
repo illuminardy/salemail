@@ -9,12 +9,14 @@ const sortMessagesByDate = (messages) => {
 
 const sanitizeInput = (message) => {
   const sanitizedBody = dompurify.sanitize(message.body);
+  const sanitizedChain = message.chain && message.chain.map((m) => sanitizeInput(m));
 
   return {
     ...message,
     body: sanitizedBody,
     date: new Date(message.date).toLocaleDateString(),
-    preview: `${stripHTML(sanitizedBody)}`
+    preview: `${stripHTML(sanitizedBody)}`,
+    chain: sanitizedChain
   }
 };
 

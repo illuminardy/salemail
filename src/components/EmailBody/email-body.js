@@ -10,6 +10,28 @@ const EmailBody = ({ message }) => {
     return <Tag key={idx} tag={tag} />
   });
 
+  const email = (
+    <EmailBodyListItem 
+      key={"original"}
+      sender={message.sender} 
+      date={message.date} 
+      body={message.body}
+    />
+  )
+
+  const emails = message.chain && message.chain.map((m, idx) => {
+    return (
+      <EmailBodyListItem 
+        key={idx} 
+        sender={m.sender} 
+        date={m.date} 
+        body={m.body}
+      />
+    )
+  });
+
+  console.log(message.chain)
+
   return (
     <div className="email-body-container">
       <div className="email-body-header">
@@ -17,11 +39,8 @@ const EmailBody = ({ message }) => {
         <Fragment>{tags}</Fragment>
       </div>
       <EmailBodyList>
-        <EmailBodyListItem 
-          sender={message.sender} 
-          date={message.date} 
-          body={message.body}
-        />
+        {email}
+        {emails}
       </EmailBodyList>
     </div>
   )
