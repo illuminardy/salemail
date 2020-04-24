@@ -47,7 +47,3 @@ export const getMessageIdsByTag = (messages) => {
 export const getMessageById = (messages, id) => {
   return messages.find((message) => message.id === id);
 };
-
-// export const getMessages = () => {
-//   return messages;
-// };
