@@ -16,3 +16,10 @@ it('returns all messages associated with a tag', () => {
 it('returns unique tags', () => {
   expect(manager.tags.length).toEqual(2);
 });
+
+it('removes emails given a set of ids', () => {
+  let setToRemove = new Set(["1", "2"]);
+  manager.removeEmails(setToRemove);
+
+  expect(manager.getMessages().length).toEqual(8);
+});

@@ -1,9 +1,9 @@
 import React, { Fragment, useContext } from 'react';
-import { getMessageIdsByTag } from '../../utils/email-manager';
+import { getMessageIdsByTag, removeEmails } from '../../utils/email-manager';
 import SelectedContext from '../../SelectedContext';
 import Icon from '../Icon';
 
-const iconNames = ["archive", "report", "delete", "markunread", "watch_later", "label"];
+const iconNames = ["archive", "report", "markunread", "watch_later", "label"];
 
 const EmailListActions = (props) => {
   const selected = useContext(SelectedContext);
@@ -16,6 +16,10 @@ const EmailListActions = (props) => {
     selected.deselectAll();
   };
 
+  function handleDelete() {
+    removeEmails(selected.ids);
+  };
+
   const selectedEmailIcons = iconNames.map((name, idx) => {
     return <Icon key={idx} name={name} />
   });
@@ -25,6 +29,7 @@ const EmailListActions = (props) => {
         {selected.ids.size ? (
           <Fragment>
             <Icon enabled key={"deselect"} name={"indeterminate_check_box"} clickHandler={handleDeselectAll} />
+            <Icon enabled key={"delete"} name={"delete"} clickHandler={handleDelete}/>
             {selectedEmailIcons}
           </Fragment>
           ) : (

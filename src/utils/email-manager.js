@@ -21,7 +21,7 @@ const sanitizeInput = (message) => {
 // Source: https://stackoverflow.com/questions/822452/strip-html-from-text-javascript
 const stripHTML = (html) => html.replace(/<[^>]*>?/gm, ''); 
 
-const messages = 
+let messages = 
     sortMessagesByDate(emails.messages)
     .map(sanitizeInput);
 
@@ -32,6 +32,12 @@ export const tags = [...messages.reduce((acc, curr) => {
 
   return acc;
 }, new Set())];
+
+export const removeEmails = (ids) => {
+  messages = messages.filter((message) => {
+    return !ids.has(message.id);
+  });
+};
 
 export const getMessagesByTag = (tag) => {
   return messages.filter((message) => {
