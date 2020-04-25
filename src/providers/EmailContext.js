@@ -1,15 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, createContext } from 'react';
 
 import { getMessages } from '../utils/email-manager';
 
-const EmailContext = useContext();
+const EmailContext = createContext();
 
 export const EmailProvider = (props) => {
   const [messages, setMessages] = useState(getMessages());
-
-  function removeEmails(ids) {
-    
-  }
 
   function removeEmails(ids) {
     let updatedMessages = messages.filter((message) => {

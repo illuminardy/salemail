@@ -1,11 +1,20 @@
-import React, { Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
+import { useParams } from 'react-router-dom';
+
+// Components
 import EmailBodyList from '../EmailBodyList';
 import EmailBodyListItem from '../EmailBodyListItem';
 import Tag from '../Tag';
 
+import EmailContext from '../../providers/EmailContext';
+
 import './email-body.scss';
 
-const EmailBody = ({ message }) => {
+const EmailBody = () => {
+  const emailCtx = useContext(EmailContext);
+  const params = useParams();
+
+  const message = emailCtx.getMessageById(params.id);
   const tags = message.tags.map((tag, idx) => {
     return <Tag key={idx} tag={tag} />
   });

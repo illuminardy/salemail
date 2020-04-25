@@ -18,7 +18,7 @@ import EmailBodyActions from './components/EmailBodyActions';
 
 import { EmailProvider } from './providers/EmailContext';
 import { SelectedProvider } from './SelectedContext';
-import { getMessages, getMessagesByTag, getMessageById } from './utils/email-manager';
+import { getMessagesByTag, getMessageById } from './utils/email-manager';
 
 function App() {
   return (
@@ -41,9 +41,9 @@ function App() {
                 <SideNav />
                 <Switch>
                   <Route path="/inbox" exact component={EmailList} />
-                  <Route path="/inbox/:id"  render={(props) => <EmailBody message={getMessageById(props.match.params.id)} />} />
+                  <Route path="/inbox/:id"  component={EmailBody} />
                   <Route path="/tag/:name" exact render={(props) => <EmailList messages={getMessagesByTag(props.match.params.name)} />}  />
-                  <Route path="/tag/:name/:id"  render={(props) => <EmailBody message={getMessageById(props.match.params.id)} />} />
+                  <Route path="/tag/:name/:id"  component={EmailBody} />
                   <Redirect from="/" to="/inbox" />
                 </Switch>
               </div>
