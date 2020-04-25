@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import EmailListItem from '../EmailListItem';
 
 import './email-list.scss';
+import EmailContext from '../../providers/EmailContext';
 
-const EmailList = ({ messages }) => {
-  const emails = messages.map((message) => {
+const EmailList = () => {
+  const emailCtx = useContext(EmailContext);
+  const emails = emailCtx.messages.map((message) => {
     return <EmailListItem message={message} />
   });
 

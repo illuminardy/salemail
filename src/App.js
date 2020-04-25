@@ -40,7 +40,7 @@ function App() {
               <div className="app-body">
                 <SideNav />
                 <Switch>
-                  <Route path="/inbox" exact render={() => <EmailList messages={getMessages()} />} />
+                  <Route path="/inbox" exact component={EmailList} />
                   <Route path="/inbox/:id"  render={(props) => <EmailBody message={getMessageById(props.match.params.id)} />} />
                   <Route path="/tag/:name" exact render={(props) => <EmailList messages={getMessagesByTag(props.match.params.name)} />}  />
                   <Route path="/tag/:name/:id"  render={(props) => <EmailBody message={getMessageById(props.match.params.id)} />} />
